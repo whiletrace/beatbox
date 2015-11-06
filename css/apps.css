@@ -1,0 +1,34 @@
+
+body{
+	background-color: black;
+	
+}
+.row.header{
+	max-width: 100%;
+	 height:20vh; 
+	 background-color: black;
+	 border-bottom: 1px solid white;
+}
+
+
+.grid {
+	background-color: white;
+	height: 100px;
+	width: 100px;
+	margin-right: auto;
+	margin-left: auto;
+	
+}
+
+
+
+/* media queries*/
+@media only screen and (min-width: 64.063em) and (max-width: 90em) { 
+#square{
+background-color: yellow;
+min-width: 100%;
+
+}
+
+
+	} /* min-width 1025px and max-width 1440px, use when QAing large screen-only issues */
