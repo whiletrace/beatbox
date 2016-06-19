@@ -1,0 +1,9 @@
+blueprints/**/files/**
+coverage/**
+node_modules/**
+dist/**
+apidist/**
+config/**
+config3/**
+*.spec.js
+src/index.html
