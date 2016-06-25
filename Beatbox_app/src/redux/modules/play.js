@@ -5,12 +5,13 @@ export const MOUSE_LEAVE = 'MOUSE_LEAVE'
 export const CLICK = 'CLICK'
 export const DBL_CLICK = 'DBL_CLICK'
 // create actions
-export function togglePlay (IsPlaying) {
+export function togglePlay(IsPlaying) {
   return {
     type: PLAY,
-    payload: IsPlaying
+     payload: IsPlaying
   }
 }
+
 // ------------------------------------
 // Action Handlers
 // ------------------------------------
