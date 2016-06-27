@@ -1,8 +1,8 @@
-import {PLAY, togglePlay, MOUSE_OVER, MOUSE_LEAVE, CLICK, DBL_CLICK, default as BeatboxReducer} from 'redux/modules/play'
+import {TOGGLE_IS_PLAYING, TogglePlay, MOUSE_OVER, MOUSE_LEAVE, CLICK, DBL_CLICK, default as BeatboxReducer} from 'redux/modules/play'
 
 describe('(Redux Module) play', function () {
-  it('Should export constants PLAY, MOUSE_OVER, MOUSE_LEAVE, CLICK, DBL_CLICK.', function () {
-    expect(PLAY).to.equal('PLAY'),
+  it('Should export constants TOGGLE_IS_PLAYING, MOUSE_OVER, MOUSE_LEAVE, CLICK, DBL_CLICK.', function () {
+    expect(TOGGLE_IS_PLAYING).to.equal('TOGGLE_IS_PLAYING'),
     expect(MOUSE_OVER).to.equal('MOUSE_OVER'),
     expect(MOUSE_LEAVE).to.equal('MOUSE_LEAVE'),
     expect(CLICK).to.equal('CLICK'),
@@ -12,70 +12,39 @@ describe('(Redux Module) play', function () {
     it('Should be a function.', function(){
     	expect(BeatboxReducer).to.be.a('function')
     })
-    it('Should initialize with a state of {IsPlaying: false}', function() {
-    	expect(BeatboxReducer(undefined, {})).to.equal({IsPlaying: false})
+    it('should inititailize with the initial state containing an(object)', function() {
+      expect(BeatboxReducer(undefined, {})).to.be.an('object')
+    })
+    it('initialstate should have a property isPlaying:false', function(){
+      expect(BeatboxReducer(undefined, {})).to.have.property('isPlaying',false)
     })
     it('should return the previous state if an action was not matched', function(){
       let state = BeatboxReducer(undefined,{})
-      expect(state).to.equal(false)
+      expect(state).to.be.an('object')
+      expect(state).to.have.property('isPlaying',false)
       state =BeatboxReducer(state, {type: '@@@@@@'})
-      expect(state).to.equal(false)
-      state =BeatboxReducer(state, MOUSE_OVER)
-      expect(state).to.equal(true)
-      state = counterReducer(state, {type: '@@@@@@@'})
-      expect(state).to.equal(true)
+      expect(state).to.have.property('isPlaying',false)
+      state =BeatboxReducer(state, TogglePlay(true))
+      expect(state).to.have.property('isPlaying',true)
+      state = BeatboxReducer(state, {type: '@@@@@@@'})
+      expect(state).to.have.property('isPlaying',true)
     })
   })
  
  
- describe('(Action Creator) togglePlay',function (){
+ describe('(Action Creator) TogglePlay',function (){
   it('should be exported as a function.', function (){
-    expect(togglePlay).to.be.a('function')
+    expect(TogglePlay).to.be.a('function')
   })
-  it('should return an action with type "PLAY".', function (){
-    expect(togglePlay()).to.have.property('type', PLAY)
+  it('should return an action with type "TOGGLE_IS_PLAYING".', function (){
+    expect(TogglePlay()).to.have.property('type', TOGGLE_IS_PLAYING)
  })
-  it('Should assign the first argument to the "payload" property.', function () {
-      expect(togglePlay).to.have.property('payload', IsPlaying)
+  it('Should assign the first argument to the "isPlaying" property.', function () {
+      expect(TogglePlay(true)).to.have.property('isPlaying', true )
   })
-  it('Should default the "payload" property to IsPlaying if not provided.', function () {
-      expect(togglePlay).to.have.property('payload', IsPlaying)
+  it('Should default the "isPlaying" property to false if not provided.', function () {
+      expect(TogglePlay()).to.have.property('isPlaying', false)
   })
 })
- describe('(Action Handler) MOUSE_OVER', function () {
-    it('Should change the state by the action payload\'s "IsPlaying" property.', function () {
-      let state = BeatboxReducer(undefined, {})
-      expect(state).to.equal({IsPlaying: false})
-      state = BeatboxReducer(state, togglePlay())
-      expect(state).to.equal({IsPlaying:true})
-      
-    })
-  })
- describe('(Action Handler) MOUSE_LEAVE', function () {
-    it('Should change the state by the action payload\'s "IsPlaying" property.', function () {
-      let state = BeatboxReducer(undefined, {})
-      expect(state).to.equal({IsPlaying: false})
-      state = BeatboxReducer(state, togglePlay(IsPlaying))
-      expect(state).to.equal({IsPlaying:true})
-      
-    })
-  })
- describe('(Action Handler) CLICK', function () {
-    it('Should change the state by the action payload\'s "IsPlaying" property.', function () {
-      let state = BeatboxReducer(undefined, {})
-      expect(state).to.equal({IsPlaying: false})
-      state = BeatboxReducer(state, togglePlay(IsPlaying))
-      expect(state).to.equal({IsPlaying:true})
-      
-    })
-  })
- describe('(Action Handler) DBL_CLICK', function () {
-    it('Should change the state by the action payload\'s "IsPlaying" property.', function () {
-      let state = BeatboxReducer(undefined, {})
-      expect(state).to.equal({IsPlaying: false})
-      state = BeatboxReducer(state, togglePlay(IsPlaying))
-      expect(state).to.equal({IsPlaying:true})
-      
-    })
-  })
+ 
  })
