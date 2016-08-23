@@ -1,0 +1,5 @@
+import React, { PropTypes } from 'react'
+import NavBar from 'containers/NavBar'
+import Footer from 'components/Footer'
+import Login from 'containers/Login'
+import '../../styles/core.scss'
