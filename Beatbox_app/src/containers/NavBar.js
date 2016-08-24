@@ -58,6 +58,7 @@ export class NavBar extends React.Component {
           <Navbar.Header>
             <Navbar.Brand>
               <a href='/'>Our Site</a>
+              <a href='/beatbox'> beatbox</a>
             </Navbar.Brand>
             <Navbar.Toggle/>
           </Navbar.Header>
