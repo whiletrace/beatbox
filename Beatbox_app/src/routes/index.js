@@ -8,12 +8,13 @@ import { Router, Route, IndexRoute } from 'react-router'
 // your current file is.
 import CoreLayout from 'layouts/CoreLayout/CoreLayout'
 import HomeView from 'views/HomeView/HomeView'
+import BeatBoxView from 'views/BeatBoxView/BeatBoxView'
 
 export default (store) => (
   <Router>
     <Route path='/' component={CoreLayout}>
       <IndexRoute component={HomeView} />
+      <Route path='/beatbox' component={BeatBoxView} />
     </Route>
-    <Route path='/beatbox' component={CoreLayout} />
   </Router>
 )
