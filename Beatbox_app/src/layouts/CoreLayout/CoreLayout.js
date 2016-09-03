@@ -1,7 +1,6 @@
 import React, { PropTypes } from 'react'
 import NavBar from 'containers/NavBar'
 import Footer from 'components/Footer'
-import Login from 'containers/Login'
 import '../../styles/core.scss'
 
 // Note: Stateless/function components *will not* hot reload!
@@ -17,7 +16,6 @@ function CoreLayout ({ children }) {
   return (
     <div>
       <NavBar/>
-      <Login/>
       <div className='container'>
         <div id='root' style={{height: '100%'}}>
           {children}
